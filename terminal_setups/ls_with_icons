@@ -1,0 +1,5 @@
+-- first run this command to install lsd the one responsible for the icons 
+brew install lsd
+--
+--then run this command to make the ls run lsd insted
+alias ls='lsd'
