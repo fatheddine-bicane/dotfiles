@@ -337,6 +337,12 @@ require("lazy").setup({
 		end,
 	},
 
+	--cursor animations
+	{
+		"sphamba/smear-cursor.nvim",
+		opts = {},
+	},
+
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
 	-- This is often very useful to both group configuration, as well as handle
@@ -1087,6 +1093,8 @@ vim.cmd("highlight Normal guibg=#000000")
 
 -- Change the line number color to dark green
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#d1cda8", bg = "#000000" }) -- Dark green foreground, black background
+--this to chamge folders names colors
+--vim.cmd("highlight NvimTreeFolderName guifg=#ED8E8E") -- Change folder name to red
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
