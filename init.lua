@@ -1095,6 +1095,18 @@ vim.cmd("highlight Normal guibg=#000000")
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#d1cda8", bg = "#000000" }) -- Dark green foreground, black background
 --this to chamge folders names colors
 --vim.cmd("highlight NvimTreeFolderName guifg=#ED8E8E") -- Change folder name to red
-
+--
+--this line let the cursor get pass the last char while in normal mode
+vim.o.virtualedit = "onemore"
+--
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+-- this to map jj to act like escape key (faster way to go to normal mod)
+vim.api.nvim_set_keymap("n", "oo", "<Esc>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "oo", "<Esc>", { noremap = true, silent = true })
+--
+--this will make shift l and h move by words
+vim.api.nvim_set_keymap("n", "L", "w", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "H", "b", { noremap = true, silent = true })
+--
