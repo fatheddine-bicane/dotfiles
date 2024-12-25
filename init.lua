@@ -340,9 +340,23 @@ require("lazy").setup({
 	--cursor animations
 	{
 		"sphamba/smear-cursor.nvim",
-		opts = {},
+		opts = {
+			smear_delay = 10, -- Increase delay for smoother animation (lower value = faster)
+			smear_intensity = 0.1, -- Control the intensity of the smear (lower value = smoother)
+			smear_speed = 10, -- Adjust the speed of the smear (lower value = smoother)
+			smear_shape = "circle", -- You can adjust the shape of the smear if desired
+		},
 	},
-
+	--
+	--comment plugin
+	{
+		"numToStr/Comment.nvim",
+		opts = {
+			padding = true, -- Adds padding around the comment marks
+			sticky = true, -- Keep the comment mark at the start of lines
+		},
+	},
+	--
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
 	-- This is often very useful to both group configuration, as well as handle
@@ -1102,6 +1116,13 @@ vim.o.virtualedit = "onemore"
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 --
+--
+--
+--
+--this region is for key mapping
+--
+--
+--
 -- this to map jj to act like escape key (faster way to go to normal mod)
 vim.api.nvim_set_keymap("n", "oo", "<Esc>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "oo", "<Esc>", { noremap = true, silent = true })
@@ -1109,4 +1130,44 @@ vim.api.nvim_set_keymap("i", "oo", "<Esc>", { noremap = true, silent = true })
 --this will make shift l and h move by words
 vim.api.nvim_set_keymap("n", "L", "w", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "H", "b", { noremap = true, silent = true })
+--
+--
+--ctrl arrow up down to move slected line
+-- Move lines up or down in normal mode
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true })
+
+-- Move selected lines up or down in visual mode
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+--
+--
+--make ctrl c coopy or command c in mac
+-- Use Command+C in Visual mode to copy to clipboard (if terminal supports it)
+vim.keymap.set("v", "<D-c>", '"+y', { noremap = true, silent = true })
+
+-- Use Control+C in Visual mode to copy to clipboard
+vim.keymap.set("v", "<C-c>", '"+y', { noremap = true, silent = true })
+--
+--
+--
+---- Command + C for Visual mode (requires terminal to send escape sequence)
+vim.keymap.set("v", "<Esc>[c", '"+y', { noremap = true, silent = true })
+--
+--
+--
+-- Command + C for Normal mode
+vim.keymap.set("n", "<Esc>[c", '"+yy', { noremap = true, silent = true })
+--
+--
+--
+-- Tab to add an extra tab (indent) in visual mode
+vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true })
+-- Shift+Tab to remove an extra tab (un-indent) in Visual mode
+vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true, silent = true })
+--
+--
+--
+-- Keymap for commenting selected text with Ctrl+/
+vim.keymap.set("v", "<C-/>", ":s/^/\\/\\/ /<CR>", { noremap = true, silent = true })
 --
