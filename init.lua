@@ -341,21 +341,39 @@ require("lazy").setup({
 	{
 		"sphamba/smear-cursor.nvim",
 		opts = {
-			smear_delay = 10, -- Increase delay for smoother animation (lower value = faster)
+			smear_delay = 20, -- Increase delay for smoother animation (lower value = faster)
 			smear_intensity = 0.1, -- Control the intensity of the smear (lower value = smoother)
 			smear_speed = 10, -- Adjust the speed of the smear (lower value = smoother)
 			smear_shape = "circle", -- You can adjust the shape of the smear if desired
 		},
 	},
 	--
-	--comment plugin
+	--
+	--terminal iside neovim
 	{
-		"numToStr/Comment.nvim",
-		opts = {
-			padding = true, -- Adds padding around the comment marks
-			sticky = true, -- Keep the comment mark at the start of lines
-		},
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = function()
+			require("toggleterm").setup({
+				size = 20,
+				open_mapping = [[<c-j>]], -- Your custom keybinding here
+				direction = "float", -- Ensure the terminal is in float mode
+				float_opts = {
+					border = "single", -- Border style, can be "single", "double", "rounded", etc.
+					width = 120, -- Width of the floating window
+					height = 35, -- Height of the floating window
+					winblend = 3, -- Transparency of the window
+					highlights = {
+						border = "Normal", -- Set border highlight
+						background = "Normal", -- Set background highlight
+					},
+				},
+			})
+			-- Add additional key mapping for <leader>tt
+			vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
+		end,
 	},
+	--
 	--
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
@@ -1171,3 +1189,29 @@ vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true, silent = true })
 -- Keymap for commenting selected text with Ctrl+/
 vim.keymap.set("v", "<C-/>", ":s/^/\\/\\/ /<CR>", { noremap = true, silent = true })
 --
+--
+--
+--
+--forces arrow to mouve up and down (to solve the aut recommand prob)
+local cmp = require("cmp")
+
+cmp.setup({
+	mapping = {
+		["<Up>"] = function(fallback)
+			if cmp.visible() then
+				cmp.close() -- Close the completion menu
+				fallback() -- Fallback to default arrow key behavior
+			else
+				fallback()
+			end
+		end,
+		["<Down>"] = function(fallback)
+			if cmp.visible() then
+				cmp.close()
+				fallback()
+			else
+				fallback()
+			end
+		end,
+	},
+})
