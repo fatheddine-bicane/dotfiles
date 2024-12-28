@@ -337,6 +337,35 @@ require("lazy").setup({
 		end,
 	},
 
+	--
+	--
+	--
+	-- Function Signature Help
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy", -- This ensures the plugin loads lazily when you need it
+		config = function()
+			require("lsp_signature").setup({
+				bind = true, -- Bind the signature to the function
+				hint_enable = true, -- Enable parameter hints
+				floating_window = true, -- Show signature in a floating window
+				hint_prefix = "🔍 ", -- Custom prefix for the hint
+				handler_opts = {
+					border = "rounded", -- You can set the border type for the floating window
+				},
+			})
+		end,
+	},
+	--
+	--
+	--
+	--
+	--
+	--
+	--
+	--
+	--
+
 	--cursor animations
 	{
 		"sphamba/smear-cursor.nvim",
