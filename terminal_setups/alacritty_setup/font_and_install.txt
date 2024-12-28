@@ -1,0 +1,11 @@
+#first urun thi comand
+brew tap homebrew/cask-font
+#
+#then this (u change the the (...) with the full font name and replace spaces with '-')
+brew install (...)
+#
+#after the font installing u need to make folder to manage alacritty
+mkdir -p ~/.config/alacritty
+#then u creat a file inside this folder to setup
+touch ~/.config/alacritty/alacritty.toml
+

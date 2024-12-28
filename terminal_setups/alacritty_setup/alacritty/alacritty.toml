@@ -1,0 +1,41 @@
+[window]
+option_as_alt = "both"
+
+[font]
+normal.family = "FiraMono Nerd Font"
+size = 16
+
+# Kanagawa Dragon Color Scheme for Alacritty
+[colors]
+# Primary colors
+primary.background = "#000000"
+primary.foreground = "#C5C9C5"
+
+# Cursor colors
+cursor.background = "#C8C093"
+cursor.foreground = "#181616"
+
+# Normal colors
+normal.black = "#0D0C0C"
+normal.red = "#c68b83"
+normal.green = "#8A9A7B"
+normal.yellow = "#C4B28A"
+normal.blue = "#8BA4B0"
+normal.magenta = "#A292A3"
+normal.cyan = "#8EA4A2"
+normal.white = "#C8C093"
+
+# Bright colors (bold text uses these)
+bright.black = "#A6A69C"
+bright.red = "#E46876"
+bright.green = "#87A987"
+bright.yellow = "#E6C384"
+bright.blue = "#7FB4CA"
+bright.magenta = "#938AA9"
+bright.cyan = "#7AA89F"
+bright.white = "#C5C9C5"
+
+# Selection Colors
+selection.background = "#2D4F67"
+selection.foreground = "#C8C093"
+
