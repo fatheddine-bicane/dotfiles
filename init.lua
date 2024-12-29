@@ -243,6 +243,8 @@ require("lazy").setup({
 	--
 	-- Use `opts = {}` to force a plugin to be loaded.
 	--
+	--
+	--
 	-- Here is a more advanced example where we pass configuration
 	-- options to `gitsigns.nvim`. This is equivalent to the following Lua:
 	--    require('gitsigns').setup({ ... })
@@ -276,7 +278,10 @@ require("lazy").setup({
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
+	--
 	--the tree
+	--
+	--
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = "nvim-tree/nvim-web-devicons", -- Icon support for file types
@@ -363,22 +368,22 @@ require("lazy").setup({
 	--
 	--
 	--
-	--
-	--
 
 	--cursor animations
 	{
 		"sphamba/smear-cursor.nvim",
 		opts = {
-			smear_delay = 20, -- Increase delay for smoother animation (lower value = faster)
+			smear_delay = 10, -- Increase delay for smoother animation (lower value = faster)
 			smear_intensity = 0.1, -- Control the intensity of the smear (lower value = smoother)
-			smear_speed = 10, -- Adjust the speed of the smear (lower value = smoother)
+			smear_speed = 5, -- Adjust the speed of the smear (lower value = smoother)
 			smear_shape = "circle", -- You can adjust the shape of the smear if desired
 		},
 	},
 	--
 	--
 	--terminal iside neovim
+	--
+	--
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
@@ -386,22 +391,23 @@ require("lazy").setup({
 			require("toggleterm").setup({
 				size = 20,
 				open_mapping = [[<c-j>]], -- Your custom keybinding here
-				direction = "float", -- Ensure the terminal is in float mode
+				direction = "float", -- Terminal in float mode
 				float_opts = {
-					border = "single", -- Border style, can be "single", "double", "rounded", etc.
+					border = "single", -- Border style
 					width = 120, -- Width of the floating window
 					height = 35, -- Height of the floating window
-					winblend = 3, -- Transparency of the window
+					winblend = 3, -- Transparency
 					highlights = {
-						border = "Normal", -- Set border highlight
-						background = "Normal", -- Set background highlight
+						border = "Normal", -- Border highlight
+						background = "Normal", -- Background highlight
 					},
 				},
 			})
-			-- Add additional key mapping for <leader>tt
-			vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
 		end,
 	},
+
+	--
+	--
 	--
 	--
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
