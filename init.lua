@@ -378,6 +378,10 @@ require("lazy").setup({
 	--
 	--
 	--
+	{
+		"karb94/neoscroll.nvim",
+		opts = {},
+	},
 	--
 	--
 	--
