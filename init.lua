@@ -378,6 +378,11 @@ require("lazy").setup({
 	--
 	--
 	--
+	--
+	--
+	--
+	--
+	--smoth scroling animation
 	{
 		"karb94/neoscroll.nvim",
 		opts = {},
