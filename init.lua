@@ -397,9 +397,9 @@ require("lazy").setup({
 	{
 		"sphamba/smear-cursor.nvim",
 		opts = {
-			smear_delay = 10, -- Increase delay for smoother animation (lower value = faster)
+			smear_delay = 1, -- Increase delay for smoother animation (lower value = faster)
 			smear_intensity = 0.1, -- Control the intensity of the smear (lower value = smoother)
-			smear_speed = 5, -- Adjust the speed of the smear (lower value = smoother)
+			smear_speed = 1, -- Adjust the speed of the smear (lower value = smoother)
 			smear_shape = "circle", -- You can adjust the shape of the smear if desired
 		},
 	},
@@ -452,6 +452,14 @@ require("lazy").setup({
 			require("42header").setup(opts)
 		end,
 	},
+	--
+	--
+	--
+	--
+	--
+	--pligin for the 42 that counts the function line
+
+	--
 	--
 	--
 	--
