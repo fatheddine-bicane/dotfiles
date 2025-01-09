@@ -108,7 +108,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -459,8 +459,16 @@ require("lazy").setup({
 	--
 	--pligin for the 42 that counts the function line
 
-	--
-	--
+	{
+		"FtVim/ft_count_lines.nvim",
+		config = function()
+			require("ft_count_lines").setup({
+				enable_on_start = true, -- Enable the count lines feature at startup
+				keybinding = "<leader>cl", -- Keybinding to toggle the feature
+			})
+		end,
+	},
+
 	--
 	--
 	--
@@ -480,6 +488,8 @@ require("lazy").setup({
 	--
 	-- Then, because we use the `opts` key (recommended), the configuration runs
 	-- after the plugin has been loaded as `require(MODULE).setup(opts)`.
+	--
+	--
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
@@ -983,7 +993,8 @@ require("lazy").setup({
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
+				-- completion = { completeopt = "menu,menuone,noinsert" },
+				completion = { completeopt = "menu,menuone,noinsert,noselect" },
 
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`
@@ -1003,7 +1014,9 @@ require("lazy").setup({
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
 					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-
+					--
+					--
+					--
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
 					--['<CR>'] = cmp.mapping.confirm { select = true },
