@@ -358,9 +358,12 @@ require("lazy").setup({
 				handler_opts = {
 					border = "rounded", -- You can set the border type for the floating window
 				},
+				-- Adjust the vertical position of the floating window
+				-- floating_window_off_y = 2, -- Move the window down by 1 line
 			})
 		end,
 	},
+
 	--
 	--
 	--
@@ -420,7 +423,7 @@ require("lazy").setup({
 					border = "single", -- Border style
 					width = 120, -- Width of the floating window
 					height = 35, -- Height of the floating window
-					winblend = 3, -- Transparency
+					winblend = 0, -- Transparency
 					highlights = {
 						border = "Normal", -- Border highlight
 						background = "Normal", -- Background highlight
@@ -1013,14 +1016,23 @@ require("lazy").setup({
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					-- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					--
+					--
+					--
+					--a custm enter keymap that select the curent item
+					["<C-y>"] = cmp.mapping.select_next_item(),
+					--
+					--
+					--
+					--
 					--
 					--
 					--
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
-					--['<CR>'] = cmp.mapping.confirm { select = true },
-					--['<Tab>'] = cmp.mapping.select_next_item(),
+					-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.select_next_item(),
 					--['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
