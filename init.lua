@@ -341,8 +341,6 @@ require("lazy").setup({
 			keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 		end,
 	},
-
-	--
 	--
 	--
 	-- Function Signature Help
@@ -1246,7 +1244,7 @@ vim.api.nvim_set_hl(0, "LineNr", { fg = "#d1cda8", bg = "#000000" }) -- Dark gre
 --vim.cmd("highlight NvimTreeFolderName guifg=#ED8E8E") -- Change folder name to red
 --
 --this line let the cursor get pass the last char while in normal mode
-vim.o.virtualedit = "onemore"
+-- vim.o.virtualedit = "onemore"
 --
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
@@ -1255,6 +1253,44 @@ vim.o.virtualedit = "onemore"
 --
 --
 --this region is for key mapping
+--
+--
+--
+--
+--
+-- Add this after your keymap region (around line 1257)
+-- Automatic function definition finder
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+	pattern = { "*.c", "*.h" }, -- Only for C files
+	callback = function()
+		-- Get the root directory (looks for Makefile or .git)
+		local current_dir = vim.fn.expand("%:p:h")
+		local root_dir = vim.fn.system(
+			"cd "
+				.. current_dir
+				.. " && git rev-parse --show-toplevel 2>/dev/null || dirname $(find . -name Makefile -type f | head -n1) 2>/dev/null || echo "
+				.. current_dir
+		)
+		root_dir = vim.fn.trim(root_dir)
+
+		-- Cache the files
+		vim.fn.jobstart("find " .. root_dir .. ' -type f -name "*.c" -o -name "*.h"', {
+			on_stdout = function(_, data)
+				vim.b.file_cache = data
+			end,
+		})
+	end,
+})
+
+--
+--
+--
+--
+--
+--
+--
+--
+--
 --
 --
 --
@@ -1332,3 +1368,58 @@ cmp.setup({
 		end,
 	},
 })
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "gd", builtin.lsp_definitions, {})
+--
+--
+--
+--
+--
+-- Custom commands region
+--
+-- Command to load all files in current directory to buffer
+--
+--
+vim.api.nvim_create_user_command("Loadall", function()
+	-- Get all files in current directory and subdirectories
+	local files = vim.fn.systemlist('find . -type f -not -path "*/\\.*"')
+	local count = 0
+	local current_buf = vim.api.nvim_get_current_buf()
+
+	for _, file in ipairs(files) do
+		-- Clean the path (remove leading ./)
+		local clean_file = string.gsub(file, "^%./", "")
+		-- Skip certain directories and file types
+		if
+			not string.match(clean_file, "^%.git/")
+			and not string.match(clean_file, "^node_modules/")
+			and not string.match(clean_file, "%.png$")
+			and not string.match(clean_file, "%.jpg$")
+		then
+			-- Use edit command to load the file properly
+			vim.cmd("edit " .. vim.fn.fnameescape(clean_file))
+			-- Make sure LSP attaches to this buffer
+			vim.cmd("do FileType")
+			count = count + 1
+		end
+	end
+
+	-- Return to the original buffer
+	vim.api.nvim_set_current_buf(current_buf)
+
+	-- Force LSP to attach and analyze all buffers
+	vim.cmd("silent! bufdo LspStart")
+
+	-- Wait a bit for LSP to process files
+	vim.defer_fn(function()
+		-- Show how many files were loaded
+		print(count .. " files loaded and processed")
+		-- Show all loaded buffers
+		vim.cmd("ls")
+	end, 500)
+end, {
+	desc = "Load all files in current directory into buffers with full initialization",
+})
+--
+--
