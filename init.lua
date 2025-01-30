@@ -446,7 +446,8 @@ require("lazy").setup({
 			default_map = true, -- Default mapping <F1> in normal mode.
 			auto_update = true, -- Update header when saving.
 			user = "fbicane", -- Your user.
-			mail = "marvin@42.fr", -- Your mail.
+			mail = "fbicane@student.1337.ma", --my email
+			-- mail = "marvin@42.fr", -- Your mail.
 			-- add other options.
 		},
 		config = function(_, opts)
@@ -840,10 +841,11 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				-- clangd = {},
+				clangd = {},
 				-- gopls = {},
 				-- pyright = {},
 				-- rust_analyzer = {},
+				tsserver = {}, -- Add this line for JavaScript/TypeScript support
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -885,6 +887,7 @@ require("lazy").setup({
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"typescript-language-server", --JavaScript syntax highliter
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
