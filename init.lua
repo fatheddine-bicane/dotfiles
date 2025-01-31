@@ -845,7 +845,9 @@ require("lazy").setup({
 				-- gopls = {},
 				-- pyright = {},
 				-- rust_analyzer = {},
-				["typescript-language-server"] = {},
+				["typescript-language-server"] = {
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+				},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -889,7 +891,7 @@ require("lazy").setup({
 				"stylua", -- Used to format Lua code
 				"typescript-language-server",
 				"eslint-lsp", -- Add this for ESLint support
-				"prettier", -- Add this for formatting
+				-- "prettier", -- Add this for formatting
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -942,6 +944,10 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				-- javascript = { "prettier" },
+				-- typescript = { "prettier" },
+				-- javascriptreact = { "prettier" },
+				-- typescriptreact = { "prettier" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
