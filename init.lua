@@ -843,6 +843,9 @@ require("lazy").setup({
 			local servers = {
 				clangd = {},
 				-- gopls = {},
+				html = {}, -- HTML language server
+				cssls = {}, -- CSS language server
+				pyright = {}, --Python language server
 				-- pyright = {},
 				-- rust_analyzer = {},
 				["typescript-language-server"] = {
@@ -889,6 +892,9 @@ require("lazy").setup({
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"pyright", -- Python LSP
+				"html-lsp", -- HTML LSP
+				"css-lsp", -- CSS LSP
 				"typescript-language-server",
 				"eslint-lsp", -- Add this for ESLint support
 				-- "prettier", -- Add this for formatting
@@ -1159,6 +1165,7 @@ require("lazy").setup({
 				"c",
 				"diff",
 				"html",
+				"css",
 				"lua",
 				"luadoc",
 				"markdown",
@@ -1166,7 +1173,6 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
-				--javascript
 				"javascript",
 				"typescript",
 				"tsx", -- For React
