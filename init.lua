@@ -366,6 +366,8 @@ require("lazy").setup({
 
 			-- Configure lazygit command to use terminal colors
 			vim.g.lazygit_use_custom_config_file_path = 0
+
+			vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>:q<CR>", { noremap = true, silent = true })
 		end,
 	},
 	--
