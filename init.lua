@@ -378,6 +378,19 @@ require("lazy").setup({
 	--
 	--
 	--
+	--nordic theme
+	-- {
+	-- 	"AlexvZyl/nordic.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("nordic").load()
+	-- 	end,
+	-- },
+	--
+	--
+	--
+	--
 	--
 	--
 	--
@@ -916,6 +929,7 @@ require("lazy").setup({
 
 			--the colore mode for kangawa
 			vim.cmd("colorscheme kanagawa-dragon")
+			-- vim.cmd.colorscheme("nordic")
 			-- Default options:
 			-- Ensure the servers and tools above are installed
 			--  To check the current status of installed tools and/or manually install
@@ -1296,13 +1310,35 @@ vim.o.smarttab = true -- Enables smart tabbing behavior
 vim.o.autoindent = true -- Enable automatic indentation
 vim.o.smartindent = true -- Automatically insert indent on new lines
 
---background black
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--this is a kanagawa theme set
+--
+-- --background black
 vim.cmd("highlight Normal guibg=#000000")
 
 -- Change the line number color to dark green
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#d1cda8", bg = "#000000" }) -- Dark green foreground, black background
 --this to chamge folders names colors
 --vim.cmd("highlight NvimTreeFolderName guifg=#ED8E8E") -- Change folder name to red
+--
+--
+--
+--
+--
+--
 --
 --this line let the cursor get pass the last char while in normal mode
 -- vim.o.virtualedit = "onemore"
