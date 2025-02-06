@@ -6,6 +6,7 @@ normal.family = "FiraMono Nerd Font"
 size = 16
 
 # Kanagawa Dragon Color Scheme for Alacritty
+######################################################
 [colors]
   [colors.primary]
     background = "#000000"
@@ -34,4 +35,36 @@ size = 16
   [colors.selection]
     background = "#2D4F67"
     foreground = "#C8C093"
+######################################################
 
+# Nordic Color Scheme for Alacritty (Exact match with nordic.nvim)
+######################################################
+# [colors]
+#   [colors.primary]
+#     background = "#242933"    # gray0 - exact match from nordic.nvim
+#     foreground = "#BBC3D4"    # white0_normal - exact match from nordic.nvim
+#
+#   [colors.normal]
+#     black   = "#3B4252"       # gray2
+#     red     = "#BF616A"       # red.base
+#     green   = "#A3BE8C"       # green.base
+#     yellow  = "#EBCB8B"       # yellow.base
+#     blue    = "#81A1C1"       # blue1
+#     magenta = "#B48EAD"       # magenta.base
+#     cyan    = "#8FBCBB"       # cyan.base
+#     white   = "#E5E9F0"       # white2
+#
+#   [colors.bright]
+#     black   = "#4C566A"       # gray4
+#     red     = "#C5727A"       # red.bright
+#     green   = "#B1C89D"       # green.bright
+#     yellow  = "#EFD49F"       # yellow.bright
+#     blue    = "#88C0D0"       # blue2
+#     magenta = "#BE9DB8"       # magenta.bright
+#     cyan    = "#9FC6C5"       # cyan.bright
+#     white   = "#ECEFF4"       # white3
+#
+#   [colors.selection]
+#     background = "#4C566A"    # gray4
+#     foreground = "#D8DEE9"    # white1
+######################################################

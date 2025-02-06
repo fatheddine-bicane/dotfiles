@@ -394,6 +394,7 @@ require("lazy").setup({
 	--
 	--
 	--
+	--nordic theme
 	{
 		"AlexvZyl/nordic.nvim",
 		lazy = false,
