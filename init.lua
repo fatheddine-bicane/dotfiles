@@ -85,11 +85,6 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
---this is the tree folder coloes
-vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = "#2e3257" }) -- Folder icon color
-vim.api.nvim_set_hl(0, "NvimTreeFolderName", { fg = "#627d9a" }) -- Folder name color
-vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { fg = "#2e3257" }) -- Opened folder name color
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -236,7 +231,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-	{ "rebelot/kanagawa.nvim" }, --theme collor
+	-- { "rebelot/kanagawa.nvim" }, --theme collor
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following
 	-- keys can be used to configure plugin behavior/loading/etc.
@@ -244,6 +239,27 @@ require("lazy").setup({
 	-- Use `opts = {}` to force a plugin to be loaded.
 	--
 	--
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	config = function()
+	-- 		-- Apply the colorscheme first
+	-- 		vim.cmd.colorscheme("kanagawa-dragon")
+	--
+	-- 		-- Set pure black background
+	-- 		vim.cmd("highlight Normal guibg=#000000")
+	--
+	-- 		-- Change the line number color
+	-- 		vim.api.nvim_set_hl(0, "LineNr", {
+	-- 			fg = "#d1cda8", -- Light beige color for line numbers
+	-- 			bg = "#000000", -- Pure black background
+	-- 		})
+	--
+	-- 		-- Change NvimTree folder icon color
+	-- 		vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", {
+	-- 			fg = "#d1cda8", -- Light beige color for folder icons
+	-- 		})
+	-- 	end,
+	-- },
 	--
 	-- Here is a more advanced example where we pass configuration
 	-- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -378,15 +394,14 @@ require("lazy").setup({
 	--
 	--
 	--
-	--nordic theme
-	-- {
-	-- 	"AlexvZyl/nordic.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		require("nordic").load()
-	-- 	end,
-	-- },
+	{
+		"AlexvZyl/nordic.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nordic").load()
+		end,
+	},
 	--
 	--
 	--
@@ -928,7 +943,7 @@ require("lazy").setup({
 			}
 
 			--the colore mode for kangawa
-			vim.cmd("colorscheme kanagawa-dragon")
+			-- vim.cmd("colorscheme kanagawa-dragon")
 			-- vim.cmd.colorscheme("nordic")
 			-- Default options:
 			-- Ensure the servers and tools above are installed
@@ -1297,8 +1312,6 @@ require("lazy").setup({
 		},
 	},
 })
---the folder in the tree colors
-vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = "#d1cda8" })
 
 --tab characrer settings
 -- Set tab and indentation settings to insert actual tab characters
@@ -1326,19 +1339,11 @@ vim.o.smartindent = true -- Automatically insert indent on new lines
 --
 --this is a kanagawa theme set
 --
--- --background black
-vim.cmd("highlight Normal guibg=#000000")
-
--- Change the line number color to dark green
-vim.api.nvim_set_hl(0, "LineNr", { fg = "#d1cda8", bg = "#000000" }) -- Dark green foreground, black background
---this to chamge folders names colors
---vim.cmd("highlight NvimTreeFolderName guifg=#ED8E8E") -- Change folder name to red
+-- -- --background black
+-- vim.cmd("highlight Normal guibg=#000000")
 --
---
---
---
---
---
+-- -- Change the line number color to dark green
+-- vim.api.nvim_set_hl(0, "LineNr", { fg = "#d1cda8", bg = "#000000" }) -- Dark green foreground, black background
 --
 --this line let the cursor get pass the last char while in normal mode
 -- vim.o.virtualedit = "onemore"
