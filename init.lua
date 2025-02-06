@@ -231,7 +231,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-	-- { "rebelot/kanagawa.nvim" }, --theme collor
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following
 	-- keys can be used to configure plugin behavior/loading/etc.
@@ -239,27 +238,27 @@ require("lazy").setup({
 	-- Use `opts = {}` to force a plugin to be loaded.
 	--
 	--
-	-- {
-	-- 	"rebelot/kanagawa.nvim",
-	-- 	config = function()
-	-- 		-- Apply the colorscheme first
-	-- 		vim.cmd.colorscheme("kanagawa-dragon")
-	--
-	-- 		-- Set pure black background
-	-- 		vim.cmd("highlight Normal guibg=#000000")
-	--
-	-- 		-- Change the line number color
-	-- 		vim.api.nvim_set_hl(0, "LineNr", {
-	-- 			fg = "#d1cda8", -- Light beige color for line numbers
-	-- 			bg = "#000000", -- Pure black background
-	-- 		})
-	--
-	-- 		-- Change NvimTree folder icon color
-	-- 		vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", {
-	-- 			fg = "#d1cda8", -- Light beige color for folder icons
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			-- Apply the colorscheme first
+			vim.cmd.colorscheme("kanagawa-dragon")
+
+			-- Set pure black background
+			vim.cmd("highlight Normal guibg=#000000")
+
+			-- Change the line number color
+			vim.api.nvim_set_hl(0, "LineNr", {
+				fg = "#d1cda8", -- Light beige color for line numbers
+				bg = "#000000", -- Pure black background
+			})
+
+			-- Change NvimTree folder icon color
+			vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", {
+				fg = "#d1cda8", -- Light beige color for folder icons
+			})
+		end,
+	},
 	--
 	-- Here is a more advanced example where we pass configuration
 	-- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -395,14 +394,14 @@ require("lazy").setup({
 	--
 	--
 	--nordic theme
-	{
-		"AlexvZyl/nordic.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("nordic").load()
-		end,
-	},
+	-- {
+	-- 	"AlexvZyl/nordic.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("nordic").load()
+	-- 	end,
+	-- },
 	--
 	--
 	--
@@ -943,9 +942,6 @@ require("lazy").setup({
 				},
 			}
 
-			--the colore mode for kangawa
-			-- vim.cmd("colorscheme kanagawa-dragon")
-			-- vim.cmd.colorscheme("nordic")
 			-- Default options:
 			-- Ensure the servers and tools above are installed
 			--  To check the current status of installed tools and/or manually install
@@ -1331,24 +1327,6 @@ vim.o.smartindent = true -- Automatically insert indent on new lines
 --
 --
 --
---
---
---
---
---
---
---
---this is a kanagawa theme set
---
--- -- --background black
--- vim.cmd("highlight Normal guibg=#000000")
---
--- -- Change the line number color to dark green
--- vim.api.nvim_set_hl(0, "LineNr", { fg = "#d1cda8", bg = "#000000" }) -- Dark green foreground, black background
---
---this line let the cursor get pass the last char while in normal mode
--- vim.o.virtualedit = "onemore"
---
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 --
@@ -1356,37 +1334,6 @@ vim.o.smartindent = true -- Automatically insert indent on new lines
 --
 --
 --this region is for key mapping
---
---
---
---
---
--- Add this after your keymap region (around line 1257)
--- Automatic function definition finder
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-	pattern = { "*.c", "*.h" }, -- Only for C files
-	callback = function()
-		-- Get the root directory (looks for Makefile or .git)
-		local current_dir = vim.fn.expand("%:p:h")
-		local root_dir = vim.fn.system(
-			"cd "
-				.. current_dir
-				.. " && git rev-parse --show-toplevel 2>/dev/null || dirname $(find . -name Makefile -type f | head -n1) 2>/dev/null || echo "
-				.. current_dir
-		)
-		root_dir = vim.fn.trim(root_dir)
-
-		-- Cache the files
-		vim.fn.jobstart("find " .. root_dir .. ' -type f -name "*.c" -o -name "*.h"', {
-			on_stdout = function(_, data)
-				vim.b.file_cache = data
-			end,
-		})
-	end,
-})
-
---
---
 --
 --
 --
