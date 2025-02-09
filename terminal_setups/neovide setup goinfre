@@ -1,0 +1,28 @@
+--Use Homebrew to install the required dependencies:
+
+brew install pkg-config
+brew install openssl
+
+
+
+
+
+
+-- install cargo
+
+(this one to install rust)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+(add this line to zshrc)
+export PATH="$HOME/.cargo/bin:$PATH"
+source ~/.zshrc  # or ~/.bashrc if you use bash
+
+
+
+--Clone the Neovide repository:
+
+git clone https://github.com/neovide/neovide.git
+mv ~/neovide /goinfre/fbicane/neovide
+cd /goinfre/fbicane/neovide
+cargo build --release
+(add this to zshrc)
+alias neovide='/goinfre/fbicane/neovide/target/release/neovide'

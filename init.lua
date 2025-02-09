@@ -461,15 +461,15 @@ require("lazy").setup({
 	--
 
 	--cursor animations
-	{
-		"sphamba/smear-cursor.nvim",
-		opts = {
-			smear_delay = 1, -- Increase delay for smoother animation (lower value = faster)
-			smear_intensity = 0.1, -- Control the intensity of the smear (lower value = smoother)
-			smear_speed = 1, -- Adjust the speed of the smear (lower value = smoother)
-			smear_shape = "circle", -- You can adjust the shape of the smear if desired
-		},
-	},
+	-- {
+	-- 	"sphamba/smear-cursor.nvim",
+	-- 	opts = {
+	-- 		smear_delay = 1, -- Increase delay for smoother animation (lower value = faster)
+	-- 		smear_intensity = 0.1, -- Control the intensity of the smear (lower value = smoother)
+	-- 		smear_speed = 1, -- Adjust the speed of the smear (lower value = smoother)
+	-- 		smear_shape = "circle", -- You can adjust the shape of the smear if desired
+	-- 	},
+	-- },
 	--
 	--
 	--terminal iside neovim
@@ -1310,6 +1310,34 @@ require("lazy").setup({
 	},
 })
 
+--
+--
+--
+--
+--
+--
+--
+--
+-- Neovide specific configurations
+if vim.g.neovide then
+	-- Enable full screen mode by default
+	vim.g.neovide_fullscreen = true
+
+	-- Font configuration to match Alacritty
+	vim.o.guifont = "FiraMono Nerd Font:h14"
+end
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
 --tab characrer settings
 -- Set tab and indentation settings to insert actual tab characters
 vim.o.expandtab = false -- Disables the use of spaces instead of tabs
