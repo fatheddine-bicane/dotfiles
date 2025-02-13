@@ -530,8 +530,8 @@ require("lazy").setup({
 				direction = "float", -- Terminal in float mode
 				float_opts = {
 					border = "single", -- Border style
-					width = 120, -- Width of the floating window
-					height = 35, -- Height of the floating window
+					width = 150, -- Width of the floating window
+					height = 45, -- Height of the floating window
 					winblend = 0, -- Transparency
 					highlights = {
 						border = "Normal", -- Border highlight
@@ -1376,6 +1376,20 @@ end
 --
 --
 --
+-- Enable system clipboard integration
+vim.opt.clipboard = "unnamedplus"
+
+-- For macOS (Command+V to paste)
+if vim.fn.has("macunix") == 1 then
+	vim.api.nvim_set_keymap("v", "<D-v>", '"+p', { noremap = true, silent = true }) -- Visual mode
+	vim.api.nvim_set_keymap("i", "<D-v>", '<Esc>"+pa', { noremap = true, silent = true }) -- Insert mode
+end
+
+-- For Linux (Ctrl+Shift+V to paste)
+if vim.fn.has("unix") == 1 and vim.fn.has("macunix") == 0 then
+	vim.api.nvim_set_keymap("v", "<C-S-v>", '"+p', { noremap = true, silent = true }) -- Visual mode
+	vim.api.nvim_set_keymap("i", "<C-S-v>", '<Esc>"+pa', { noremap = true, silent = true }) -- Insert mode
+end
 --
 --
 --
