@@ -390,6 +390,51 @@ require("lazy").setup({
 	--
 	--
 	--
+	--  dashboard
+	{
+		"nvimdev/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("dashboard").setup({
+				-- config
+				theme = "hyper",
+				config = {
+					week_header = {
+						enable = true,
+					},
+					shortcut = {
+						{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
+						{
+							icon = " ",
+							icon_hl = "@variable",
+							desc = "Files",
+							group = "Label",
+							action = "Telescope find_files",
+							key = "f",
+						},
+						{
+							desc = " Apps",
+							group = "DiagnosticHint",
+							action = "Telescope app",
+							key = "a",
+						},
+						{
+							desc = " dotfiles",
+							group = "Number",
+							action = "Telescope dotfiles",
+							key = "d",
+						},
+					},
+					footer = { "i am  the bone of my sword" },
+				},
+			})
+		end,
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	},
+	--
+	--
+	--
+	--
 	--
 	--
 	--
@@ -1501,3 +1546,19 @@ end, {
 })
 --
 --
+-- Basic clipboard setup
+vim.opt.clipboard = "unnamedplus" -- Connect to system clipboard
+
+-- Multiple ways to make Shift-V paste work in insert mode
+vim.keymap.set("i", "<S-v>", "<C-r>+", { noremap = true })
+vim.keymap.set("i", "<S-V>", "<C-r>+", { noremap = true }) -- Uppercase variant
+
+-- Alternative paste mappings (try these if Shift-V doesn't work)
+vim.keymap.set("i", "<C-S-v>", "<C-r>+", { noremap = true }) -- Ctrl-Shift-V
+vim.keymap.set("i", "<M-v>", "<C-r>+", { noremap = true }) -- Alt-V
+
+-- Debug mapping to verify key detection
+vim.keymap.set("i", "<S-v>", function()
+	vim.notify("Shift-V was pressed!")
+	return vim.fn.getreg("+")
+end, { noremap = true, expr = true })
