@@ -539,6 +539,13 @@ require("lazy").setup({
 					},
 				},
 			})
+			if vim.g.neovide then
+				-- For macOS (Command+V in terminal)
+				vim.keymap.set("t", "<D-v>", "<C-\\><C-n>pi", { noremap = true, silent = true })
+
+				-- For Linux/Windows (Ctrl+Shift+V in terminal)
+				vim.keymap.set("t", "<C-S-v>", "<C-\\><C-n>pi", { noremap = true, silent = true })
+			end
 		end,
 	},
 
@@ -1361,7 +1368,7 @@ require("lazy").setup({
 --
 --
 --
---
+--neovide configurations
 --
 -- Neovide specific configurations
 if vim.g.neovide then
@@ -1375,21 +1382,33 @@ end
 --
 --
 --
+-- Fast paste configuration for insert mode
+if vim.g.neovide then
+	-- For macOS (Command+V)
+	vim.keymap.set("i", "<D-v>", "<Esc>p`]a", { noremap = true, silent = true })
+
+	-- For Linux/Windows (Ctrl+Shift+V)
+	vim.keymap.set("i", "<C-S-v>", "<Esc>p`]a", { noremap = true, silent = true })
+end
 --
--- Enable system clipboard integration
-vim.opt.clipboard = "unnamedplus"
-
--- For macOS (Command+V to paste)
-if vim.fn.has("macunix") == 1 then
-	vim.api.nvim_set_keymap("v", "<D-v>", '"+p', { noremap = true, silent = true }) -- Visual mode
-	vim.api.nvim_set_keymap("i", "<D-v>", '<Esc>"+pa', { noremap = true, silent = true }) -- Insert mode
-end
-
--- For Linux (Ctrl+Shift+V to paste)
-if vim.fn.has("unix") == 1 and vim.fn.has("macunix") == 0 then
-	vim.api.nvim_set_keymap("v", "<C-S-v>", '"+p', { noremap = true, silent = true }) -- Visual mode
-	vim.api.nvim_set_keymap("i", "<C-S-v>", '<Esc>"+pa', { noremap = true, silent = true }) -- Insert mode
-end
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
 --
 --
 --
@@ -1414,20 +1433,15 @@ vim.o.smartindent = true -- Automatically insert indent on new lines
 --
 --
 --
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+--
+--
+--
+--
 --
 --
 --
 --
 --this region is for key mapping
---
---
---
---
---
---
---
 --
 --
 --
@@ -1560,19 +1574,19 @@ end, {
 })
 --
 --
--- Basic clipboard setup
-vim.opt.clipboard = "unnamedplus" -- Connect to system clipboard
-
--- Multiple ways to make Shift-V paste work in insert mode
-vim.keymap.set("i", "<S-v>", "<C-r>+", { noremap = true })
-vim.keymap.set("i", "<S-V>", "<C-r>+", { noremap = true }) -- Uppercase variant
-
--- Alternative paste mappings (try these if Shift-V doesn't work)
-vim.keymap.set("i", "<C-S-v>", "<C-r>+", { noremap = true }) -- Ctrl-Shift-V
-vim.keymap.set("i", "<M-v>", "<C-r>+", { noremap = true }) -- Alt-V
-
--- Debug mapping to verify key detection
-vim.keymap.set("i", "<S-v>", function()
-	vim.notify("Shift-V was pressed!")
-	return vim.fn.getreg("+")
-end, { noremap = true, expr = true })
+-- -- Basic clipboard setup
+-- vim.opt.clipboard = "unnamedplus" -- Connect to system clipboard
+--
+-- -- Multiple ways to make Shift-V paste work in insert mode
+-- vim.keymap.set("i", "<S-v>", "<C-r>+", { noremap = true })
+-- vim.keymap.set("i", "<S-V>", "<C-r>+", { noremap = true }) -- Uppercase variant
+--
+-- -- Alternative paste mappings (try these if Shift-V doesn't work)
+-- vim.keymap.set("i", "<C-S-v>", "<C-r>+", { noremap = true }) -- Ctrl-Shift-V
+-- vim.keymap.set("i", "<M-v>", "<C-r>+", { noremap = true }) -- Alt-V
+--
+-- -- Debug mapping to verify key detection
+-- vim.keymap.set("i", "<S-v>", function()
+-- 	vim.notify("Shift-V was pressed!")
+-- 	return vim.fn.getreg("+")
+-- end, { noremap = true, expr = true })
