@@ -1488,6 +1488,13 @@ vim.keymap.set("v", "<C-/>", ":s/^/\\/\\/ /<CR>", { noremap = true, silent = tru
 --
 --
 --
+-- Mapping to wrap selected text with curly braces in visual mode and indent the content
+vim.api.nvim_set_keymap("v", "{", "<esc>`>o}<esc>`<O{<esc>gv=", { noremap = true, silent = true })
+--
+--
+--
+--
+--
 --forces arrow to mouve up and down (to solve the aut recommand prob)
 local cmp = require("cmp")
 
