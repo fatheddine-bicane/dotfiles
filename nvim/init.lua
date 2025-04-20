@@ -1437,7 +1437,7 @@ vim.o.smartindent = true -- Automatically insert indent on new lines
 --
 --
 --
--- this to map jj to act like escape key (faster way to go to normal mod)
+-- this to map oo to act like escape key (faster way to go to normal mod)
 vim.api.nvim_set_keymap("n", "oo", "<Esc>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "oo", "<Esc>", { noremap = true, silent = true })
 --
@@ -1448,12 +1448,19 @@ vim.api.nvim_set_keymap("n", "H", "b", { noremap = true, silent = true })
 --
 --ctrl arrow up down to move slected line
 -- Move lines up or down in normal mode
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true })
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true })
-
+-- vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true })
+vim.keymap.set("n", "<Up>", ":m .-2<CR>==", { noremap = true, silent = true })
+vim.keymap.set("n", "<Down>", ":m .+1<CR>==", { noremap = true, silent = true })
+--
+--
+--
+--
 -- Move selected lines up or down in visual mode
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<a-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<Up>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<Down>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 --
 --
 --make ctrl c coopy or command c in mac
@@ -1490,6 +1497,7 @@ vim.keymap.set("v", "<C-/>", ":s/^/\\/\\/ /<CR>", { noremap = true, silent = tru
 --
 -- Mapping to wrap selected text with curly braces in visual mode and indent the content
 vim.api.nvim_set_keymap("v", "{", "<esc>`>o}<esc>`<O{<esc>gv=", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "{", "<esc>`>o}<esc>`<O{<esc>gv=", { noremap = true, silent = true })
 --
 --
 --
@@ -1571,6 +1579,18 @@ vim.api.nvim_create_user_command("Loadall", function()
 end, {
 	desc = "Load all files in current directory into buffers with full initialization",
 })
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
 --
 --
 -- -- Basic clipboard setup
