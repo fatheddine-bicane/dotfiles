@@ -1534,6 +1534,18 @@ vim.keymap.set("n", "gd", builtin.lsp_definitions, {})
 --
 --
 --
+--
+--
+--this fix the identation on all files type ({} js problem)
+vim.cmd([[
+  autocmd FileType * setlocal smartindent noautoindent nosmarttab
+  autocmd FileType * setlocal indentexpr=
+]])
+--
+--
+--
+--
+--
 -- Custom commands region
 --
 -- Command to load all files in current directory to buffer
