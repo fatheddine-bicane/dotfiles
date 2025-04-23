@@ -1,5 +1,5 @@
+--kanagawa dragon theme
 return {
-	--kanagawa dragon theme
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
@@ -22,3 +22,13 @@ return {
 		end,
 	},
 }
+
+--nordic theme
+-- {
+-- 	"AlexvZyl/nordic.nvim",
+-- 	lazy = false,
+-- 	priority = 1000,
+-- 	config = function()
+-- 		require("nordic").load()
+-- 	end,
+-- },
