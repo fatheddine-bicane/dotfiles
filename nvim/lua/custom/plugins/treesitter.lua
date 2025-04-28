@@ -24,6 +24,7 @@ return {
 				"tsx", -- For React
 				"json",
 				"python",
+				"dockerfile",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
