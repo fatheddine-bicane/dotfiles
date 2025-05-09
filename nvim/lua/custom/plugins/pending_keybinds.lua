@@ -1,4 +1,4 @@
--- Useful plugin to show you pending keybinds.
+-- INFO: Useful plugin to show you pending keybinds.
 return {
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",

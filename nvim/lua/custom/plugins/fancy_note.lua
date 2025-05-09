@@ -1,4 +1,4 @@
--- Highlight todo, notes, etc in comments
+-- INFO: Highlight todo, notes, etc in comments
 return {
 	{
 		"folke/todo-comments.nvim",

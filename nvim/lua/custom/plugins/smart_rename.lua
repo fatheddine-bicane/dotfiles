@@ -1,4 +1,4 @@
---smart_rename
+-- INFO: smart_rename
 return {
 	{
 		"smjonas/inc-rename.nvim",

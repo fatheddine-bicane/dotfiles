@@ -1,4 +1,4 @@
---  dashboard
+-- INFO: dashboard
 return {
 	{
 		"nvimdev/dashboard-nvim",

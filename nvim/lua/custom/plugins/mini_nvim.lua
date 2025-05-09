@@ -1,4 +1,4 @@
--- Collection of various small independent plugins/modules
+-- INFO: Collection of various small independent plugins/modules
 return {
 	{
 		"echasnovski/mini.nvim",

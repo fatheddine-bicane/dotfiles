@@ -1,4 +1,4 @@
---lazygit pluging manager
+-- INFO: lazygit pluging manager
 return {
 	{
 		"kdheepak/lazygit.nvim",

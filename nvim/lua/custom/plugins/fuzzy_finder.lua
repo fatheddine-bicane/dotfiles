@@ -1,4 +1,4 @@
--- Fuzzy Finder
+-- INFO: Fuzzy Finder
 return {
 	{ --  (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",

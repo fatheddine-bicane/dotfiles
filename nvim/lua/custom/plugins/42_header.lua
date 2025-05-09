@@ -1,4 +1,4 @@
---plugin for the 42 header
+-- INFO: plugin for the 42 header
 return {
 	{
 		"Diogo-ss/42-header.nvim",

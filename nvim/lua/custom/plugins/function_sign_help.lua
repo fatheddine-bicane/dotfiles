@@ -1,4 +1,4 @@
--- Function Signature Help
+-- INFO: Function Signature Help
 return {
 	{
 		"ray-x/lsp_signature.nvim",

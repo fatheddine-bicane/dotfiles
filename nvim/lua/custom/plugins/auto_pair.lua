@@ -1,4 +1,4 @@
---auto pair
+--INFO:auto pair
 return {
 	{
 		"windwp/nvim-autopairs", -- Optional dependency for auto-pairs to work with completion

@@ -1,4 +1,4 @@
---pligin for the 42 that counts the function line
+-- INFO: pligin for the 42 that counts the function line
 return {
 	{
 		"FtVim/ft_count_lines.nvim",

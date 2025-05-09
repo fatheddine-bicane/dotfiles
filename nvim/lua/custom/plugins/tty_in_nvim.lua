@@ -1,4 +1,4 @@
---terminal iside neovim
+-- INFO: terminal iside neovim
 return {
 	{
 		"akinsho/toggleterm.nvim",

@@ -1,4 +1,4 @@
---smoth scroling animation
+-- INFO: smoth scroling animation
 return {
 	{
 		"karb94/neoscroll.nvim",
