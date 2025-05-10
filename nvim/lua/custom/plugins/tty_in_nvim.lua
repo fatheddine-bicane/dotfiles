@@ -26,6 +26,9 @@ return {
 				-- For Linux/Windows (Ctrl+Shift+V in terminal)
 				vim.keymap.set("t", "<C-S-v>", "<C-\\><C-n>pi", { noremap = true, silent = true })
 			end
+
+			vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
+			vim.keymap.set("t", "oo", [[<C-\><C-n>]], { noremap = true, silent = true })
 		end,
 	},
 }
