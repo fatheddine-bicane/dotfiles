@@ -18,8 +18,25 @@ return {
 
 			-- Configure lazygit command to use terminal colors
 			vim.g.lazygit_use_custom_config_file_path = 0
-
-			vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>:q<CR>", { noremap = true, silent = true })
+			--
+			--
+			--
+			--
+			--
+			--
+			--
+			--
+			--
+			--fix the escape behavior in mac
+			vim.api.nvim_create_autocmd("TermOpen", {
+				pattern = "*lazygit*",
+				callback = function()
+					vim.keymap.set("t", "<Esc>", "<Esc>", { noremap = true, silent = true, buffer = true })
+				end,
+			})
+			--
+			--
+			--
 		end,
 	},
 }
