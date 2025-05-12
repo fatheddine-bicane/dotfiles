@@ -59,14 +59,6 @@ return {
 			) -- toggle file explorer on current file
 			keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
 			keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
-			keymap.set("n", "<C-CR>", function()
-				local node = require("nvim-tree.api").tree.get_node_under_cursor()
-				if node and node.absolute_path then
-					vim.cmd("wincmd l") -- Move to the main window
-					vim.cmd("vsplit " .. vim.fn.fnameescape(node.absolute_path)) -- Open the selected file in vsplit
-					vim.cmd("wincmd l") -- Move cursor to the new window
-				end
-			end, { desc = "Open file in vertical split on the right", buffer = true }) -- open selected file in vertical split on the right side and move cursor there
 		end,
 	},
 }
