@@ -14,6 +14,18 @@ return {
 				},
 				-- Adjust the vertical position of the floating window
 				-- floating_window_off_y = 2, -- Move the window down by 1 line
+				--
+				--
+				--
+				--
+				--this toggle the floating window (hide it or show it again)
+				vim.keymap.set("i", "<C-e>", function()
+					require("lsp_signature").toggle_float_win()
+				end, { silent = true, desc = "Toggle signature floating window" }),
+				--
+				--
+				--
+				--
 			})
 		end,
 	},
