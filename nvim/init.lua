@@ -296,6 +296,10 @@ if vim.g.neovide then
 end
 --
 --
+--using the jetbrains nerdfont in neovide
+vim.opt.guifont = "JetBrainsMono Nerd Font:h14"
+--
+--
 --
 --
 --
