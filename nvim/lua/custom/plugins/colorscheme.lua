@@ -1,4 +1,5 @@
 -- INFO: kanagawa dragon theme
+
 return {
 	{
 		"rebelot/kanagawa.nvim",
@@ -10,10 +11,10 @@ return {
 			vim.cmd("highlight Normal guibg=#000000")
 
 			-- Change the line number color
-			-- vim.api.nvim_set_hl(0, "LineNr", {
-			-- 	fg = "#d1cda8", -- Light beige color for line numbers
-			-- 	-- bg = "#000000", -- Pure black background
-			-- })
+			vim.api.nvim_set_hl(0, "LineNr", {
+				fg = "#d1cda8", -- Light beige color for line numbers
+				-- bg = "#000000", -- Pure black background
+			})
 
 			-- Change NvimTree folder icon color
 			vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", {
@@ -41,7 +42,8 @@ return {
 			--
 			--
 			--
-
+			--
+			-- Seperator
 			vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#282727", bg = "NONE" })
 			vim.opt.fillchars:append({ vert = "▌" }) -- use a thick vertical bar
 			--
@@ -60,3 +62,25 @@ return {
 -- 		require("nordic").load()
 -- 	end,
 -- },
+
+-- return {
+-- 	{
+-- 		"catppuccin/nvim",
+-- 		name = "catppuccin",
+-- 		priority = 1000,
+-- 		config = function()
+-- 			require("catppuccin").setup({
+-- 				flavour = "mocha", -- or "latte", "frappe", "macchiato"
+-- 				transparent_background = false,
+-- 				integrations = {
+-- 					cmp = true,
+-- 					gitsigns = true,
+-- 					nvimtree = true,
+-- 					telescope = true,
+-- 					treesitter = true,
+-- 				},
+-- 			})
+-- 			vim.cmd.colorscheme("catppuccin")
+-- 		end,
+-- 	},
+-- }

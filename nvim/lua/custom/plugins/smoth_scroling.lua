@@ -1,7 +1,7 @@
 -- INFO: smoth scroling animation
 return {
-	{
-		"karb94/neoscroll.nvim",
-		opts = {},
-	},
+	-- {
+	-- 	"karb94/neoscroll.nvim",
+	-- 	opts = {},
+	-- },
 }

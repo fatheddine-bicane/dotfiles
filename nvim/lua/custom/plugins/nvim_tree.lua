@@ -47,6 +47,7 @@ return {
 					},
 				},
 			})
+
 			-- Keymaps
 			local keymap = vim.keymap -- for conciseness
 
@@ -59,6 +60,38 @@ return {
 			) -- toggle file explorer on current file
 			keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
 			keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+			--
+			--
+			--
+			-- tmux
+			require("nvim-tree").setup({
+				on_attach = function(bufnr)
+					local api = require("nvim-tree.api")
+
+					-- Load default mappings first
+					api.config.mappings.default_on_attach(bufnr)
+
+					-- Helper function for keymap options
+					local function opts(desc)
+						return {
+							desc = "nvim-tree: " .. desc,
+							buffer = bufnr,
+							noremap = true,
+							silent = true,
+							nowait = true,
+						}
+					end
+
+					-- Override with tmux navigation
+					vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", opts("Tmux Navigate Left"))
+					vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", opts("Tmux Navigate Right"))
+					vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", opts("Tmux Navigate Down"))
+					vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", opts("Tmux Navigate Up"))
+				end,
+			})
+			--
+			--
+			--
 		end,
 	},
 }
