@@ -1,0 +1,21 @@
+
+--neovide configurations
+--
+-- -- Neovide specific configurations
+-- if vim.g.neovide then
+-- 	-- Enable full screen mode by default
+-- 	vim.g.neovide_fullscreen = true
+--
+-- 	-- Font configuration to match Alacritty
+-- 	vim.o.guifont = "FiraMono Nerd Font:h14"
+-- end
+-- --
+-- --
+-- -- Fast paste configuration for insert mode
+-- if vim.g.neovide then
+-- 	-- For macOS (Command+V)
+-- 	vim.keymap.set("i", "<D-v>", "<Esc>p`]a", { noremap = true, silent = true })
+--
+-- 	-- For Linux/Windows (Ctrl+Shift+V)
+-- 	vim.keymap.set("i", "<C-S-v>", "<Esc>p`]a", { noremap = true, silent = true })
+-- end
