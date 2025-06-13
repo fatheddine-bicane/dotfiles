@@ -1,0 +1,8 @@
+[user]
+	email = fatheddine04@gmail.com
+	name = fatheddine-bicane
+
+[core]
+	editor = nvim
+	pager = less -FX
+	editor = nvim
