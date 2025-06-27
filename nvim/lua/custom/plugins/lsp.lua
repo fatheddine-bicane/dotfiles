@@ -157,9 +157,23 @@ return {
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
 					end
+					--
+					--
+					-- Attach lsp_signature for this buffer:
+					local signature = require("lsp_signature")
+					signature.on_attach({
+						bind = true,
+						hint_enable = true,
+						floating_window = true,
+						hint_prefix = "🔍 ",
+						handler_opts = { border = "rounded" },
+					}, event.buf)
+					--
+					--
 				end,
 			})
-
+			--
+			--
 			-- Change diagnostic symbols in the sign column (gutter)
 			if vim.g.have_nerd_font then
 				local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
