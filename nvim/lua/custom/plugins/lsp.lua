@@ -168,6 +168,25 @@ return {
 					diagnostic_signs[vim.diagnostic.severity[type]] = icon
 				end
 				vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+				--
+				-- force diagnostics on screen
+				--
+				vim.diagnostic.config({
+					signs = { text = diagnostic_signs },
+					virtual_text = {
+						enabled = true,
+						spacing = 4,
+						source = "if_many",
+						prefix = "●",
+					},
+					float = {
+						enabled = true,
+						source = "always",
+						border = "rounded",
+					},
+					severity_sort = true,
+					update_in_insert = false,
+				})
 			end
 
 			-- LSP servers and clients are able to communicate to each other what features they support.
