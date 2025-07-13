@@ -1,4 +1,3 @@
-
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
@@ -38,17 +37,17 @@
           "type": "git"
         },
         {
-          "background": "#8ba4b0",
+          "background": "#8a9a7b",
           "background_templates": [
-            "{{ if gt .Code 0 }}#E46876{{ end }}"
+            "{{ if gt .Code 0 }}#b97871{{ end }}"
           ],
-          "foreground": "#C8C093",
+          "foreground": "#0d0c0c",
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "properties": {
             "always_enabled": true
           },
           "style": "diamond",
-          "template": " \uf0e7 ",
+          "template": "{{ if gt .Code 0 }} {{ .Code }} {{ else }} \uf0e7 {{ end }}",
           "trailing_diamond": "\ue0b4",
           "type": "status"
         }
