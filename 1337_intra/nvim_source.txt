@@ -1,0 +1,9 @@
+-----------------------------------------------------------------
+check this repo and install the (nvim-linux-x86_64.tar.gz) under the relese section
+
+https://github.com/neovim/neovim-releases/releases
+-----------------------------------------------------------------
+after installing extract the tar
+
+$> tar -xvzf nvim-linux-x86_64.tar.gz
+-----------------------------------------------------------------
