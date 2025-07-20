@@ -8,6 +8,12 @@ return {
 		config = function()
 			local keymap = vim.keymap
 
+			--
+			--
+			--
+			--
+			--Renames a file in the file tree, using git mv if the file is tracked by Git,
+			--or a normal rename if not, then refreshes the tree view.
 			local function git_aware_rename(node)
 				local old_path = node.absolute_path
 				local old_name = node.name
@@ -18,13 +24,27 @@ return {
 				local new_path = node.parent.absolute_path .. "/" .. input
 				local is_git = vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] == "true"
 				if is_git then
-					vim.cmd(string.format('silent !git mv "%s" "%s"', old_path, new_path))
+					-- Check if the file is tracked by git
+					local tracked = vim.fn.systemlist('git ls-files --error-unmatch "' .. old_path .. '" 2>&1')
+					if vim.v.shell_error == 0 then
+						-- File is tracked, use git mv
+						vim.cmd(string.format('silent !git mv "%s" "%s"', old_path, new_path))
+					else
+						-- File not tracked, rename normally
+						vim.loop.fs_rename(old_path, new_path)
+					end
 				else
+					-- Not a git repo, rename normally
 					vim.loop.fs_rename(old_path, new_path)
 				end
 				require("nvim-tree.api").tree.reload()
 			end
-
+			--
+			--
+			--
+			--
+			--
+			--
 			-- 🔑 Global keymaps
 			keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 			keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle on current file" })
@@ -50,15 +70,33 @@ return {
 							default = "",
 							symlink = "",
 							git = {
-								unstaged = "✗",
-								staged = "✓",
+								-- unstaged = "✗",
+								-- unstaged = "",
+								unstaged = "",
+								--
+								-- staged = "✓",
+								staged = "",
+								--
 								unmerged = "",
-								renamed = "➜",
+								--
+								-- renamed = "➜",
+								-- renamed = "",
+								-- renamed = "",
+								renamed = "",
+								--
 								-- untracked = "★",
 								-- untracked = "",
-								untracked = "",
+								-- untracked = "",
+								-- untracked = "",
+								-- untracked = "",
+								untracked = "",
+								--
+								--
+								-- deleted = "",
 								deleted = "",
+								--
 								ignored = "◌",
+								--
 							},
 							folder = {
 								arrow_closed = "",
