@@ -1,0 +1,13 @@
+for this terminal emulator to work these need to be installed:
+	nvim
+	neovide
+------------------------------------------------------------------
+
+run this in the terminal
+$> git clone https://github.com/rootiest/neoterm ~/.config/neoterm
+------------------------------------------------------------------
+
+to runt the project run this in terminal (or creat an alias)
+$> neovide -- -u ~/.config/neoterm/neoterm.lua
+
+this runs neovide as terminal
