@@ -130,8 +130,8 @@ return {
 					vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", opts("Tmux Navigate Up"))
 					--
 					--
-					-- leader cc will change the tree focuse to the folder under the cursor
-					vim.keymap.set("n", "<leader>C", function()
+					-- shift-Cd will change the tree focuse to the folder under the cursor
+					vim.keymap.set("n", "Cd", function()
 						local node = api.tree.get_node_under_cursor()
 						if node and node.type == "directory" then
 							api.tree.change_root(node.absolute_path)
