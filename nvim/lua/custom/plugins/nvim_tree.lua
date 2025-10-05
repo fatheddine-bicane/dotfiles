@@ -70,26 +70,26 @@ return {
 							default = "",
 							symlink = "",
 							git = {
-								-- unstaged = "✗",
+								unstaged = "✗",
 								-- unstaged = "",
-								unstaged = "",
+								-- unstaged = "",
 								--
-								-- staged = "✓",
-								staged = "",
+								staged = "✓",
+								-- staged = "",
 								--
 								unmerged = "",
 								--
 								-- renamed = "➜",
-								-- renamed = "",
+								renamed = "",
 								-- renamed = "",
-								renamed = "",
+								-- renamed = "",
 								--
 								-- untracked = "★",
 								-- untracked = "",
 								-- untracked = "",
 								-- untracked = "",
-								-- untracked = "",
-								untracked = "",
+								untracked = "",
+								-- untracked = "",
 								--
 								--
 								-- deleted = "",
