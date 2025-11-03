@@ -4,3 +4,7 @@ precmd() {
   echo ""
 }
 ------------------------------------------------------------------------------------
+-> run this (change the 1 with 0 to turn it off) to allow apple to show wifi name
+> sudo ipconfig setverbose 1
+
+------------------------------------------------------------------------------------
