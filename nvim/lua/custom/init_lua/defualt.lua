@@ -129,8 +129,17 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 
 
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 -- vim.opt.listchars = { tab = "│ ", trail = "·", nbsp = "␣" }
+
+
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = {
+	tab = "│ ",   -- tabs
+	lead = "│",   -- leading spaces (this is what you’re missing!)
+	trail = "·",
+	nbsp = "␣",
+}
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
