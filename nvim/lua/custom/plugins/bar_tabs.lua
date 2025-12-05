@@ -1,0 +1,99 @@
+-- return {
+-- 	'romgrk/barbar.nvim',
+-- 	dependencies = {
+-- 		'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+-- 		'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+-- 	},
+-- 	init = function() vim.g.barbar_auto_setup = false end,
+-- 	opts = {
+-- 		-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+-- 		-- animation = true,
+-- 		-- insert_at_start = true,
+-- 		-- …etc.
+-- 	},
+-- 	version = '^1.0.0', -- optional: only update when a new 1.x version is released
+--
+--
+--
+--
+--
+-- }
+
+
+		-- local active_bg = '#282727'   -- Example: Dark Grey  ▌
+		-- local active_fg = '#E5C07B'   -- Example: Gold/Yellow  
+		-- local inactive_bg = '#000000' -- Example: Light Grey
+		-- local inactive_fg = '#282C34' -- Example: Dark Grey (Inverted text)
+
+
+-- return {
+-- 	'romgrk/barbar.nvim',
+-- 	dependencies = {
+-- 		'lewis6991/gitsigns.nvim',
+-- 		'nvim-tree/nvim-web-devicons',
+-- 	},
+-- 	init = function() vim.g.barbar_auto_setup = false end,
+-- 	version = '^1.0.0',
+-- 	--
+-- 	-- CONFIGURATION OPTIONS
+-- 	opts = {
+-- 		animation = true,
+-- 		--
+-- 		-- ICONS CONFIGURATION
+-- 		icons = {
+-- 			-- This sets the vertical bar style you requested
+-- 			separator = {left = ' ', right = ' '},
+--
+--
+--
+--             separator_at_end = false,
+-- 			-- Separator for INACTIVE tabs
+-- 			inactive = {
+-- 				separator = {left = ' ', right = ' '},
+-- 			},
+-- 		},
+-- 		--
+-- 		-- SIDEBAR OFFSET
+-- 		sidebar_filetypes = {
+-- 			--
+-- 			NvimTree = {
+-- 				text = '',
+-- 				align = 'center', -- Align the text: 'center', 'left', or 'right'
+-- 			},
+-- 			-- You can add other sidebars here too, like 'undotree'
+-- 		},
+-- 	},
+-- 	--
+-- 	-- SETUP AND COLORS
+-- 	config = function(_, opts)
+-- 		require('barbar').setup(opts)
+-- 	--
+-- 		-- CUSTOM COLORS (From previous step)
+--
+--
+-- 		-- local active_bg = '#393836'   -- Example: Dark Grey
+-- 		-- local active_fg = '#ff9e3b'   -- Example: Gold/Yellow
+-- 		-- local inactive_bg = '#282727' -- Example: Light Grey
+-- 		-- local inactive_fg = '#ffffff' -- Example: Dark Grey (Inverted text)
+--
+--
+-- 		local active_bg = '#393836'   -- Example: Dark Grey
+-- 		local active_fg = '#ff9e3b'   -- Example: Gold/Yellow
+-- 		local inactive_bg = '#282727' -- Example: Light Grey
+-- 		local inactive_fg = '#393836' -- Example: Dark Grey (Inverted text)
+-- 	--
+-- 		vim.api.nvim_set_hl(0, 'BufferCurrent', { fg = active_fg, bg = active_bg, bold = true })
+-- 		vim.api.nvim_set_hl(0, 'BufferCurrentMod', { fg = active_fg, bg = active_bg, bold = true })
+-- 		vim.api.nvim_set_hl(0, 'BufferCurrentSign', { fg = active_fg, bg = active_bg })
+-- 	--
+-- 		vim.api.nvim_set_hl(0, 'BufferInactive', { fg = inactive_fg, bg = inactive_bg })
+-- 		vim.api.nvim_set_hl(0, 'BufferInactiveMod', { fg = inactive_fg, bg = inactive_bg })
+-- 		vim.api.nvim_set_hl(0, 'BufferInactiveSign', { fg = inactive_fg, bg = inactive_bg })
+--
+-- 		-- APPLY OFFSET COLOR
+-- 		vim.api.nvim_set_hl(0, 'BufferOffset', { fg = "#000000", bg = "#000000" })
+--
+--         -- Tabpage Fill (The empty space at the rest of the bar)
+--         vim.api.nvim_set_hl(0, 'BufferTabpageFill', { fg = "#000000", bg = "#000000" })
+-- 	end,
+-- }
