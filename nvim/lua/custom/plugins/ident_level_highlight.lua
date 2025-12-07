@@ -7,6 +7,7 @@ return {
 		opts = {
 			indent = {
 				char = "│",
+				tab_char = "│",
 			},
 			scope = { enabled = false }, -- because mini.indentscope handles the active one
 		},
