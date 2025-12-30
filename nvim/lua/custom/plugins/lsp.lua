@@ -219,9 +219,11 @@ return {
 			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
+			-- NOTE: [Here goes the lsps ...]
 			local servers = {
 				clangd = {},
-				-- gopls = {},
+				gopls = {},
 				html = {}, -- HTML language server
 				cssls = {}, -- CSS language server
 				pyright = {}, --Python language server
@@ -267,13 +269,26 @@ return {
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.
 			local ensure_installed = vim.tbl_keys(servers or {})
+
+
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 				"pyright", -- Python LSP
 				"html-lsp", -- HTML LSP
 				"css-lsp", -- CSS LSP
 				"typescript-language-server",
-				"eslint-lsp", -- Add this for ESLint support
+				"eslint-lsp", -- (.js, .ts, .jsx) error on editor
+				"clangd",
+				"gopls",
+				"rust_analyzer",
+
+
+
+
+
+
+
+
 				-- "prettier", -- Add this for formatting
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

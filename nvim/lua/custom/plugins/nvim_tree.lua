@@ -94,9 +94,9 @@ return {
 								unmerged = "",
 								--
 								-- renamed = "➜",
-								renamed = "",
+								-- renamed = "",
 								-- renamed = "",
-								-- renamed = "",
+								renamed = "",
 								--
 								-- untracked = "★",
 								-- untracked = "",

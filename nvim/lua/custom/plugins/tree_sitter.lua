@@ -25,11 +25,6 @@ return {
 				"json",
 				"python",
 				"dockerfile",
-				"cpp", --c++
-				"java", --java
-				"go",
-				"rust",
-				"embedded_template"
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
@@ -42,61 +37,6 @@ return {
 			},
 			indent = { enable = true, disable = { "ruby" } },
 		},
-		--
-		--
-		--
-		--
-		--
-		-- FILETYPE DETECTION
-		-- ------------------
-		-- Neovim does not ship with a built-in `ejs` filetype.
-		-- This tells Neovim to treat `.ejs` files as `filetype=ejs`
-		-- so plugins (Treesitter, LSP, etc.) can hook into them.
-		init = function()
-			vim.filetype.add({
-				extension = {
-					ejs = "ejs",
-				},
-			})
-		end,
-		--
-		--
-		--
-		--
-		config = function(_, opts)
-			-- TREE-SITTER LANGUAGE REGISTRATION
-			-- --------------------------------
-			-- There is no Tree-sitter parser named `ejs`.
-			-- EJS is a template format (HTML + embedded JavaScript),
-			-- so we reuse the generic `embedded_template` parser.
-			--
-			-- This explicitly binds:
-			--   filetype = "ejs"  →  Tree-sitter parser = "embedded_template"
-			--
-			-- Without this registration, Tree-sitter will not attach
-			-- a parser to `.ejs` buffers, resulting in no highlighting.
-			vim.treesitter.language.register("embedded_template", "ejs")
-
-			-- Apply the Tree-sitter configuration
-			require("nvim-treesitter.configs").setup(opts)
-		end,
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
-		--
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
 		--
