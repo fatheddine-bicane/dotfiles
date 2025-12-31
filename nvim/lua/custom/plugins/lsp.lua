@@ -224,14 +224,25 @@ return {
 			local servers = {
 				clangd = {},
 				gopls = {},
-				html = {}, -- HTML language server
+				html = {
+					filetypes = {"html", "ejs"},
+				}, -- HTML language server
 				cssls = {}, -- CSS language server
 				pyright = {}, --Python language server
+				ts_ls = {
+					filetypes = {
+						"typescript",
+						"javascript",
+						"javascriptreact",
+						"typescriptreact",
+					},
+				}, -- javascript, typescript, ...
+
 				-- pyright = {},
 				-- rust_analyzer = {},
-				["typescript-language-server"] = {
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-				},
+				-- ["typescript-language-server"] = {
+				-- 	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+				-- },
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
