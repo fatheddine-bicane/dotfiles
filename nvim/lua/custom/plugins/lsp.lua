@@ -237,6 +237,7 @@ return {
 						"typescriptreact",
 					},
 				}, -- javascript, typescript, ...
+				jdtls = {},
 
 				-- pyright = {},
 				-- rust_analyzer = {},
@@ -292,6 +293,7 @@ return {
 				"clangd",
 				"gopls",
 				"rust_analyzer",
+				"jdtls", --java
 
 
 
