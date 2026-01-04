@@ -294,6 +294,7 @@ return {
 				"gopls",
 				"rust_analyzer",
 				"jdtls", --java
+				"dockerls", --docker
 
 
 

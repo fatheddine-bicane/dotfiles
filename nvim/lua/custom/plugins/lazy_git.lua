@@ -1,4 +1,9 @@
 -- INFO: lazygit pluging manager
+
+-- WARNING: the lazygit executable is nedded
+-- run $> brew install lazygit
+
+
 return {
 	{
 		"kdheepak/lazygit.nvim",
