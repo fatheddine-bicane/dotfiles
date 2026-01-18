@@ -3,29 +3,19 @@ return {
 	{
 		"ray-x/lsp_signature.nvim",
 		event = "VeryLazy", -- This ensures the plugin loads lazily when you need it
+
 		config = function()
+
 			require("lsp_signature").setup({
-				bind = true, -- Bind the signature to the function
-				hint_enable = true, -- Enable parameter hints
-				floating_window = true, -- Show signature in a floating window
-				hint_prefix = "🔍 ", -- Custom prefix for the hint
+				bind = true,
+				hint_enable = true,
+				floating_window = true,
+
+				floating_window_above_cur_line = false,-- prefer below cursor
+				floating_window_off_y = 0,-- push it fully below the current line
 				handler_opts = {
-					border = "rounded", -- You can set the border type for the floating window
+					border = "rounded",
 				},
-				-- Adjust the vertical position of the floating window
-				-- floating_window_off_y = 2, -- Move the window down by 1 line
-				--
-				--
-				--
-				--
-				--this toggle the floating window (hide it or show it again)
-				vim.keymap.set("i", "<C-e>", function()
-					require("lsp_signature").toggle_float_win()
-				end, { silent = true, desc = "Toggle signature floating window" }),
-				--
-				--
-				--
-				--
 			})
 		end,
 	},
