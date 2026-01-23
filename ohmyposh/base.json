@@ -5,8 +5,8 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#c4b28a",
-          "foreground": "#0d0c0c",
+          "background": "yellow",
+          "foreground": "black",
           "leading_diamond": "\ue0b6",
           "powerline_symbol": "\ue0b0",
           "properties": {
@@ -18,14 +18,14 @@
           "type": "path"
         },
         {
-          "background": "#E6C384",
+          "background": "yellow",
           "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#c4746e{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#E46876{{ end }}",
-            "{{ if gt .Ahead 0 }}#7FB4CA{{ end }}",
-            "{{ if gt .Behind 0 }}#c4746e{{ end }}"
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}red{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}red{{ end }}",
+            "{{ if gt .Ahead 0 }}blue{{ end }}",
+            "{{ if gt .Behind 0 }}red{{ end }}"
           ],
-          "foreground": "#0d0c0c",
+          "foreground": "black",
           "powerline_symbol": "\ue0b0",
           "properties": {
             "fetch_stash_count": true,
@@ -37,11 +37,11 @@
           "type": "git"
         },
         {
-          "background": "#8a9a7b",
+          "background": "green",
           "background_templates": [
-            "{{ if gt .Code 0 }}#b97871{{ end }}"
+            "{{ if gt .Code 0 }}red{{ end }}"
           ],
-          "foreground": "#0d0c0c",
+          "foreground": "black",
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "properties": {
             "always_enabled": true
