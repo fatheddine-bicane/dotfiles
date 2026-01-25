@@ -307,18 +307,133 @@ return {
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+			-- require("mason-lspconfig").setup({
+			-- 	handlers = {
+			-- 		function(server_name)
+			-- 			local server = servers[server_name] or {}
+			-- 			-- This handles overriding only values explicitly passed
+			-- 			-- by the server configuration above. Useful when disabling
+			-- 			-- certain features of an LSP (for example, turning off formatting for ts_ls)
+			-- 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			-- 			require("lspconfig")[server_name].setup(server)
+			-- 		end,
+			-- 	},
+			-- })
+
+
+
 			require("mason-lspconfig").setup({
 				handlers = {
+					-- 1. The Default Handler (Your existing logic for Python, C++, Lua, etc.)
 					function(server_name)
 						local server = servers[server_name] or {}
-						-- This handles overriding only values explicitly passed
-						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for ts_ls)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
 					end,
+
+					--
+					--
+					--
+					--
+					--
+					--
+					-- NOTE: java config
+					---------------------------------------------------
+					-- 2. The Special Handler for Java (JDTLS)
+					["jdtls"] = function()
+
+						local lspconfig = require("lspconfig")
+
+
+						-- Calculate a unique workspace folder for this specific project
+
+						local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+
+						local workspace_dir = vim.fn.stdpath('data') .. '/site/java/workspace-root/' .. project_name
+
+
+						-- Locate the jdtls binary installed by Mason
+
+						local mason_registry = require("mason-registry")
+
+						local jdtls_path = mason_registry.get_package("jdtls"):get_install_path()
+
+						local jdtls_bin = jdtls_path .. "/bin/jdtls"
+
+
+						-- Setup JDTLS specifically
+
+						lspconfig.jdtls.setup({
+
+							cmd = { jdtls_bin, "-data", workspace_dir },
+
+							root_dir = lspconfig.util.root_pattern(".git", "mvnw", "gradlew", "pom.xml", "build.gradle"),
+
+							capabilities = capabilities,
+
+
+							-- This attaches your "Floating Window" and "Virtual Text" requirements
+
+							on_attach = function(client, bufnr)
+
+								-- Force Virtual Text
+
+								vim.diagnostic.config({ virtual_text = true })
+
+
+								-- Auto-Show Error Window on Hover
+
+								vim.api.nvim_create_autocmd("CursorHold", {
+
+									buffer = bufnr,
+
+									callback = function()
+
+										local opts = {
+
+											focusable = false,
+
+											close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+
+											border = 'rounded',
+
+											source = 'always',
+
+											prefix = ' ',
+
+											scope = 'cursor',
+
+										}
+
+										vim.diagnostic.open_float(nil, opts)
+
+									end
+
+								})
+
+							end
+
+						})
+
+					end, 
+					---------------------------------------------------
+					--
+					--
+					--
+					--
+					--
+					--
+
+
+
+
 				},
 			})
+
+
+
+
+
 		end,
 	},
 }

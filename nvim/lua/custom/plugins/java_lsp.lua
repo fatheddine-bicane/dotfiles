@@ -6,5 +6,5 @@
 -- in nvim run :Mason and install the jdtls lsp
 
 return {
-	"nvim-java/nvim-java",
+	-- "nvim-java/nvim-java",
 }
