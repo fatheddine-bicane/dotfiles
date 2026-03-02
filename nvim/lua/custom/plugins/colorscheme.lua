@@ -79,12 +79,33 @@
 -- }
 
 
+
 return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
+
+
 		config = function()
+
+			vim.cmd.colorscheme("catppuccin")
+
+
+			-- -- change the tree git sign colors
+			vim.api.nvim_set_hl(0, "NvimTreeGitDirtyIcon", { fg = "#d4a76b", bg = "none" })
+			vim.api.nvim_set_hl(0, "NvimTreeGitNewIcon", { fg = "#7c936e", bg = "none" })
+			vim.api.nvim_set_hl(0, "NvimTreeGitDeletedIcon", { fg = "#b44a48", bg = "none" })
+			vim.api.nvim_set_hl(0, "NvimTreeGitRenamedIcon", { fg = "#b97871", bg = "none" })
+			vim.api.nvim_set_hl(0, "NvimTreeGitIgnoredIcon", { fg = "#757c74", bg = "none" })
+
+
+			-- Change NvimTree folder icon color
+			vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", {
+				fg = "#f9e2af",
+			})
+			--
+
 			require("catppuccin").setup({
 				flavour = "mocha", -- or "latte", "frappe", "macchiato"
 				transparent_background = false,
@@ -96,7 +117,28 @@ return {
 					treesitter = true,
 				},
 			})
-			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }
+
+-- return {
+-- 	{
+-- 		"catppuccin/nvim",
+-- 		name = "catppuccin",
+-- 		priority = 1000,
+-- 		config = function()
+-- 			require("catppuccin").setup({
+-- 				flavour = "mocha", -- or "latte", "frappe", "macchiato"
+-- 				transparent_background = false,
+-- 				integrations = {
+-- 					cmp = true,
+-- 					gitsigns = true,
+-- 					nvimtree = true,
+-- 					telescope = true,
+-- 					treesitter = true,
+-- 				},
+-- 			})
+-- 			vim.cmd.colorscheme("catppuccin")
+-- 		end,
+-- 	},
+-- }
