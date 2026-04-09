@@ -239,6 +239,22 @@ return {
 				}, -- javascript, typescript, ...
 				jdtls = {},
 
+
+				--JSON
+				jsonls = {
+					-- jsonls strictly requires snippetSupport to be true
+					capabilities = {
+						textDocument = {
+							completion = {
+								completionItem = {
+									snippetSupport = true,
+								},
+							},
+						},
+					},
+				},
+
+
 				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ["typescript-language-server"] = {
@@ -295,6 +311,7 @@ return {
 				"rust_analyzer",
 				"jdtls", --java
 				"dockerls", --docker
+				"json-lsp", -- json
 
 
 
