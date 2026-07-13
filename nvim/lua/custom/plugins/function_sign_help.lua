@@ -20,9 +20,9 @@ return {
 
 				-- 2. Create the manual keymap
 				-- This function toggles the window without leaving Insert mode or moving the cursor.
-				vim.keymap.set({ 'i', 'n' }, '<C-i>', function()
-					require('lsp_signature').toggle_float_win()
-				end, { silent = true, noremap = true, desc = 'Toggle LSP Signature' })
+				-- vim.keymap.set({ 'i', 'n' }, '<C-i>', function()
+				-- 	require('lsp_signature').toggle_float_win()
+				-- end, { silent = true, noremap = true, desc = 'Toggle LSP Signature' })
 
 			})
 		end,
