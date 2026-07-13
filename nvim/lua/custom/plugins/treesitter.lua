@@ -29,7 +29,8 @@ return {
 				"java", --java
 				"go",
 				"rust",
-				"embedded_template"
+				"embedded_template",
+				"yaml", -- YAML Treesitter parser
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,

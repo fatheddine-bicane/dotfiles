@@ -253,8 +253,6 @@ return {
 						},
 					},
 				},
-
-
 				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ["typescript-language-server"] = {
@@ -312,6 +310,7 @@ return {
 				"jdtls", --java
 				"dockerls", --docker
 				"json-lsp", -- json
+				"yaml-language-server", -- YAML LSP
 
 
 
